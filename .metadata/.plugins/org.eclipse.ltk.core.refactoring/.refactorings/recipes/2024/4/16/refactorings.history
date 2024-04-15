@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.rakshit.recipes.service.searchService&apos; to &apos;SearchService&apos;&#x0D;&#x0A;- Original project: &apos;recipes&apos;&#x0D;&#x0A;- Original element: &apos;com.rakshit.recipes.service.searchService&apos;&#x0D;&#x0A;- Renamed element: &apos;com.rakshit.recipes.service.SearchService&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Rename similarly named elements&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;searchService&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.rakshit.recipes.service{searchService.java[searchService" matchStrategy="1" name="SearchService" qualified="false" references="true" similarDeclarations="true" stamp="1713174188834" textual="true" version="1.0"/>
+</session>

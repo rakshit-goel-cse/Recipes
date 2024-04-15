@@ -1,0 +1,5 @@
+package com.rakshit.repository;
+
+public interface Repository {
+
+}

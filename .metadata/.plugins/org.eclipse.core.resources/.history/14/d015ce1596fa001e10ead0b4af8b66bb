@@ -1,0 +1,36 @@
+package com.rakshit.recipes.controllers;
+
+import java.util.List;
+import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rakshit.recipes.entities.Recipes;
+import com.rakshit.recipes.entities.RecipesOptions;
+import com.rakshit.recipes.repository.RecipesRepository;
+import com.rakshit.recipes.service.OptionValues;
+
+import reactor.core.publisher.Flux;
+
+@RestController
+public class RecipesController {
+
+	@Autowired
+	private RecipesRepository rep;
+	
+	@Autowired
+	private OptionValues optionValues;
+	
+	@GetMapping("/")
+	public Flux<Recipes> getTypesOptions() {
+		//log.info("dfvdv");
+		return rep.findAll();
+	}
+	
+	@GetMapping("/options")
+	public RecipesOptions findDistinctValues(){
+		return optionValues.getOptionValues();
+	}
+}

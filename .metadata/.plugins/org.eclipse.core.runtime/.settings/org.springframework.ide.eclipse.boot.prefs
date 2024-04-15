@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.data-mongodb-reactive=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.web=1
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=reciepies
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=3.2.4
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.description=\ Spring Boot project for reciepies api
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.groupId=com.rakshit
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.javaVersion=17
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.language=java
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.name=reciepies
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packageName=com.rakshit.reciepies
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.packaging=jar
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.type=MAVEN
+org.springframework.ide.eclipse.boot.wizard.PreferredSelections.version=0.0.1-SNAPSHOT
+org.springframework.ide.eclipse.boot.wizard.initializr.url=https\://start.spring.io\n

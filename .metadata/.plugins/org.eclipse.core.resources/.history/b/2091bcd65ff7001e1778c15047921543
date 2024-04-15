@@ -1,0 +1,11 @@
+package com.rakshit.repository;
+
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.stereotype.Repository;
+
+import com.rakshit.entities.Recipes;
+
+@Repository
+public interface RecipesRepository extends ReactiveMongoRepository<Recipes, Integer> {
+
+}

@@ -1,0 +1,1 @@
+INDEX VERSION 1.134+F:\programs\Spring\reciepies\.metadata\.plugins\org.eclipse.jdt.core
