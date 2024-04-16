@@ -1,0 +1,22 @@
+package com.rakshit.recipes.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rakshit.entities.Recipes;
+import com.rakshit.repository.RecipesRepository;
+
+import reactor.core.publisher.Flux;
+
+@RestController
+public class RecipesController {
+
+	@Autowired
+	RecipesRepository rep;
+	
+	@GetMapping("/")
+	public Flux<Recipes> getTypesOptions() {
+		return rep.findAll();
+	}
+}

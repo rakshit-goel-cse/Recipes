@@ -1,0 +1,55 @@
+package com.rakshit.recipes.service;
+
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.TextCriteria;
+import org.springframework.stereotype.Service;
+
+import com.rakshit.recipes.entities.Recipes;
+import reactor.core.publisher.Flux;
+
+@Service
+public class searchService {
+	
+	@Autowired
+	private ReactiveMongoTemplate reactMonTemp;
+	
+	private Criteria getCri(String column, List<String> keywords) {
+        return Criteria.where(column).regex(String.join("|", keywords));
+    }
+	
+	public Flux<Recipes> getRecipies(String cuisine, String diet, String course, List<String> keywords){
+		
+		Query query=new Query();
+		
+		if(null!=cuisine) {
+			query.addCriteria(Criteria.where("Cuisine").is(cuisine));
+		}
+		if(null!=diet) {
+			query.addCriteria(Criteria.where("Diet").is(diet));
+		}
+		if(null!=course) {
+			query.addCriteria(Criteria.where("Course").is(course));
+		}
+		
+		//creating criteria for searching keywords
+		
+		Criteria cri= new Criteria().orOperator(
+				getCri("RecipeName",keywords),
+				getCri("TranslatedRecipeName",keywords),
+				getCri("Instructions",keywords),
+				getCri("TranslatedInstructions",keywords)
+				);
+		//adding criteria in query
+		query.addCriteria(cri);
+		
+		return reactMonTemp.find(query, Recipes.class);
+		
+	}
+}

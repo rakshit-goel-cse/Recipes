@@ -1,0 +1,18 @@
+package com.rakshit.recipes.repository;
+
+import java.util.List;
+
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+
+import com.rakshit.recipes.entities.Recipes;
+import com.rakshit.recipes.entities.RecipesOptions;
+
+import reactor.core.publisher.Flux;
+
+public interface RecipesRepository extends ReactiveMongoRepository<Recipes, ObjectId> {
+
+	@Query(value= "SELECT DISTINCT Cuisine,Course,Diet FROM recipes")
+	public Flux<RecipesOptions> findDistinctValues();
+}
