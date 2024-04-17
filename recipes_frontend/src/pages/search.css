@@ -13,3 +13,18 @@
     margin-top: 10px; /* Add some top margin to separate from the select elements */
     /* Other styles as needed */
 }
+
+.header {
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer {
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

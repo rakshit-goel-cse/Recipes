@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './search.css';
+import recipe from './recipe_card';
 
 function Search({Option, setServerStatus}) {
     const [searchText, setsearchText] = useState("");
@@ -16,7 +17,7 @@ function Search({Option, setServerStatus}) {
         console.log("serching data");
         let url="http://192.168.29.231:1234/recipes";
         
-        setSearchData("Searching");
+        //setSearchData("Searching");
 
         fetch(url,{
             headers: {
@@ -31,7 +32,7 @@ function Search({Option, setServerStatus}) {
         })
         .then(response=>{
             if(!response.ok){
-                setSearchData("Error searching");
+                //setSearchData("Error searching");
             }
             else{
                 return response.json();
@@ -63,21 +64,26 @@ function Search({Option, setServerStatus}) {
 
     return(
         <div className='container'>
+
+            <div className='header'>
+            <div>
             {Option && Option.diet && optionElement(Option.diet, diet , setDiet ,1,"Diet")}
             {Option && Option.course && optionElement(Option.course, course , setCourse ,2,"Course")}
             {Option && Option.cuisines && optionElement(Option.cuisines, cuisines , setCuisines ,3,"Cuisines")}
-            
-            <input type='submit' onClick={getDataFromServer}/>
+            </div>
             
             <input className='search' type="text" onChange={(event)=>setsearchText(event.target.value)} value={searchText} placeholder="Search keywords"></input>
             
-            <view style={{height:'20%',maxHeight:'20%' , overflow:'auto'}}
-            >{JSON
-            .stringify(searchData
-                .slice(offSet*(page-1),offSet*page)
-                )}</view>
+            <input type='submit' onClick={getDataFromServer}/>
+            </div>
+
+            {console.log(searchData
+                .slice(offSet*(page-1),offSet*page))}
+            {searchData && searchData.length>0 && recipe(searchData
+                .slice(offSet*(page-1),offSet*page))}
             
-            <view>
+
+            <div className='footer'>
                     <label>offSet</label>
                     <input type={'number'} value={offSet} onChange={(event)=>{
                      const newOffset = parseInt(event.target.value);
@@ -90,7 +96,7 @@ function Search({Option, setServerStatus}) {
                     setpage(event.target.value?event.target.value:0)
                     }}></input>
                 <input type='button' onClick={()=>page<totalPage ?setpage(page+1):''} value={">>"}/>
-            </view>
+            </div>
         </div>
     );
 }
