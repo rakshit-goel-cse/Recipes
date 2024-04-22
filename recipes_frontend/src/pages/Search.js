@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './search.css';
-import recipe from './recipe_card';
+import Recipe from './recipe_card';
 
 function Search({Option, setServerStatus}) {
     const [searchText, setsearchText] = useState("");
@@ -54,12 +54,24 @@ function Search({Option, setServerStatus}) {
     const optionElement=(options,state,setState,id,heading)=>{
         return(
             <select key={id} value={state} onChange={(event)=>setState(event.target.value)}>
-            <option value="">{heading}</option>
+            <option value="" style={{fontWeight:"bold",background:"grey",color:"white"}}>{heading}</option>
             {options.map((value,index)=>{
                 return(<option key={index} value={value}>{value}</option>)
             })}
           </select>
         );
+    }
+
+    
+
+    const showRecipes=()=>{
+         let recipes= ( searchData.length>0) ? searchData.slice(offSet*(page-1),offSet*page) :[''];
+        if(recipes){
+    return recipes
+    .map((recipe, index) => ( 
+        recipe && <Recipe key={index} recipe={recipe} index={index} />
+    ))}
+    
     }
 
     return(
@@ -77,11 +89,9 @@ function Search({Option, setServerStatus}) {
             <input type='submit' onClick={getDataFromServer}/>
             </div>
 
-            {console.log(searchData
-                .slice(offSet*(page-1),offSet*page))}
-            {searchData && searchData.length>0 && recipe(searchData
-                .slice(offSet*(page-1),offSet*page))}
-            
+    <div style={{height:'60%',overflow:"auto"}}>
+      {showRecipes()}
+      </div>
 
             <div className='footer'>
                     <label>offSet</label>

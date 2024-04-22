@@ -12,8 +12,9 @@ function App() {
       let url='http://192.168.29.231:1234/options';
   
       fetch(url,{
+        method: 'GET',
         headers: {
-          'Accept': 'application/json'
+          'Content-Type': 'application/json',
         }
       })
       .then(response=>{
