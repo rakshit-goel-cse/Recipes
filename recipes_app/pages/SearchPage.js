@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, View ,Text, TextInput, Button, TouchableWithoutFeedback} from "react-native";
 import DropDownPicker from 'react-native-dropdown-picker';
+import ShowDataHeads from "./ShowDataHeads";
 
 
 
 const GetPicker=(data,val,setval,msg='')=>{
    const [open, setopen] = useState(false);
+   
    return(
         <DropDownPicker
       open={open}
@@ -29,14 +31,17 @@ function SearchPage({options}) {
     const [course, setcourse] = useState('');
     const [diet, setdiet] = useState("");
     const [cuisines, setcuisines] = useState("");
+    const [text,setText] = useState("");
 
     const [opencourse, setopencourse] = useState(false);
     const [opendiet, setopendiet] = useState(false);
     const [opencuisines, setopencuisines] = useState(false);
 
+    const [pageRender,setPageRender] =useState("search");
 //console.log("data cousre- ",options["cuisines"] );
 
-return(
+const searchPageFunc=()=>{
+  return(
 <TouchableWithoutFeedback
 onPress={() => {
         setopencourse(false);
@@ -117,13 +122,34 @@ onPress={() => {
         multiline={true}
         placeholder="Type Search Text"
         editable={!opencourse && !opencuisines && !opendiet}
+        value={text}
+        onChangeText={setText}
     ></TextInput>
     <View style={{flex:1,justifyContent:"center",width:"50%"}}>
-        <Button  title="Button"></Button>
+        <Button  title="Button" onPress={()=>setPageRender("dataHeads")}></Button>
     </View>
 </View>
 </TouchableWithoutFeedback>
 )
+}
+
+const callheadPage=()=>{
+  return(
+    ShowDataHeads(course,diet,cuisines,text)
+  )
+}
+
+return(
+  <>
+  {pageRender === "search" &&
+    searchPageFunc()
+  }
+  {pageRender === "dataHeads" &&
+     <ShowDataHeads data={[course,diet,cuisines,text,setPageRender]}/>   
+  }
+</>
+)
+
 }
 
 export default SearchPage;

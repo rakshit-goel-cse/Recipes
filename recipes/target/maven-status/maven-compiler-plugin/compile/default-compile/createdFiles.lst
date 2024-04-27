@@ -1,0 +1,7 @@
+com\rakshit\recipes\service\SearchService.class
+com\rakshit\recipes\entities\RecipesOptions.class
+com\rakshit\recipes\entities\Recipes.class
+com\rakshit\recipes\controllers\RecipesController.class
+com\rakshit\recipes\repository\RecipesRepository.class
+com\rakshit\recipes\RecipesApplication.class
+com\rakshit\recipes\service\OptionValues.class

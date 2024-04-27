@@ -3,10 +3,12 @@ package com.rakshit.recipes.repository;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.rakshit.recipes.entities.Recipes;
 import reactor.core.publisher.Flux;
 
+@EnableMongoRepositories
 public interface RecipesRepository extends ReactiveMongoRepository<Recipes, ObjectId> {
 
 	@Query(

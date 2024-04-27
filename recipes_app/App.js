@@ -55,6 +55,7 @@ export default function App() {
       { serverStatus==="OK" && Object.keys(options).length>0 &&
         <SearchPage options={options}/>
       }
+      
       <StatusBar style="auto" />
     </SafeAreaView>
     </SafeAreaProvider>
