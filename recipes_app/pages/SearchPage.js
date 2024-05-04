@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { StyleSheet, View ,Text, TextInput, Button, TouchableWithoutFeedback} from "react-native";
+import { StyleSheet, View ,Text, TextInput, Button, TouchableWithoutFeedback, TouchableOpacity} from "react-native";
 import DropDownPicker from 'react-native-dropdown-picker';
 import ShowDataHeads from "./ShowDataHeads";
 
@@ -66,7 +66,6 @@ onPress={() => {
           ]}
         setOpen={setopencourse}
         setValue={setcourse}
-        style={{backgroundColor:"red"}}
         containerStyle={{width:"80%", zIndex: 4 ,marginTop:10}}
         scrollViewProps={{ scrollEnabled: true }}
         listMode="MODAL"
@@ -125,9 +124,26 @@ onPress={() => {
         value={text}
         onChangeText={setText}
     ></TextInput>
-    <View style={{flex:1,justifyContent:"center",width:"50%"}}>
-        <Button  title="Button" onPress={()=>setPageRender("dataHeads")}></Button>
-    </View>
+    
+      
+          {/*
+          <View style={{flex:1,justifyContent:"center",width:"50%"}}>
+            <Button borderRadius=50 title="Search" onPress={()=>setPageRender("dataHeads")}></Button>
+            </View>
+           */}
+
+<TouchableOpacity onPress={()=>setPageRender("dataHeads")}
+style={{flex:1,justifyContent:"center",alignItems:"center", borderRadius:20,width:140,
+        maxHeight:50,backgroundColor:"white",marginBottom:20,borderWidth:2}}>
+
+        <Text style={{fontSize:20}}
+        >Search</Text>
+        
+     </TouchableOpacity>
+
+      
+     
+     
 </View>
 </TouchableWithoutFeedback>
 )

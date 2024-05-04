@@ -1,12 +1,16 @@
 package com.rakshit.recipes.service;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import com.rakshit.recipes.controllers.RecipesController;
 import com.rakshit.recipes.entities.Recipes;
+
+import ch.qos.logback.classic.Logger;
 import reactor.core.publisher.Flux;
 
 @Service
@@ -23,9 +27,10 @@ public class SearchService {
 	public Flux<Recipes> getRecipies(String cuisine, String diet, String course, String searchText){
 		
 		Query query=new Query();
-		
+		//final org.slf4j.Logger logger = LoggerFactory.getLogger(SearchService.class);
 		if(null!=cuisine) {
 			query.addCriteria(Criteria.where("Cuisine").is(cuisine));
+			//logger.info(searchText);
 		}
 		if(null!=diet) {
 			query.addCriteria(Criteria.where("Diet").is(diet));

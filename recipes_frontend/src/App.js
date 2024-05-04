@@ -20,7 +20,7 @@ function App() {
       .then(response=>{
         // Check if response is okay
       if (!response.ok) {
-        setServerStatus("error");
+        setServerStatus("error- "+response);
         throw new Error('Network response was not ok');
       }
       // Parse response body as JSON and return the parsed data

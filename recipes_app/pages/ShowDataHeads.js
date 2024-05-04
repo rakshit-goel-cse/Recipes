@@ -49,17 +49,11 @@ function ShowDataHeads(params) {
       let url = "http://192.168.29.231:1234/recipes";
 
       //setSearchData("Searching");
-
-      fetch(url, {
+      let dataPara="?Cuisine="+cuisines+"&Diet="+diet+"&Course="+course+"&SearchText="+text;
+      fetch(url+dataPara, {
         headers: {
           Accept: "application/json",
-        },
-        parameters: {
-          Course: course,
-          Diet: diet,
-          Cuisine: cuisines,
-          SearchText: text,
-        },
+        }
       })
         .then((response) => {
           if (!response.ok) {
@@ -69,8 +63,13 @@ function ShowDataHeads(params) {
           }
         })
         .then((data) => {
+          if(data.length>0){
           setServerStatus("OK");
           setdata(data);
+          }
+          else{
+            setServerStatus("No Result");
+          }
         })
         .catch((error) => {
           setServerStatus("error");
@@ -287,6 +286,24 @@ function ShowDataHeads(params) {
             })}
           </ScrollView>
         </View>
+      )}
+
+      {serverStatus === "No Result" && (
+        <>
+        <Text
+        style={{
+          fontSize: 22,
+          position: "absolute",
+          left: 20,
+          top: 35,
+          fontWeight: "900",
+        }}
+        onPress={() => setPageRender("search")}
+      >
+        {"<<"}
+      </Text>
+        <Text>No Result Found</Text>
+        </>
       )}
     </>
   );

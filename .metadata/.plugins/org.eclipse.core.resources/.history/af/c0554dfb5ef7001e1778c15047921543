@@ -1,9 +1,0 @@
-package com.rakshit.repository;
-
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-
-import com.rakshit.entities.recipesBound;
-
-public interface recipesRepository extends ReactiveMongoRepository<recipesBound, Integer> {
-
-}

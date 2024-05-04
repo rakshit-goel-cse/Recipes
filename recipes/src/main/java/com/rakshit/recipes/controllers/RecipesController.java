@@ -2,7 +2,10 @@ package com.rakshit.recipes.controllers;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +20,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import reactor.core.publisher.Flux;
 
+@CrossOrigin
 @RestController
 public class RecipesController {
 	
@@ -44,10 +48,12 @@ public class RecipesController {
 	}
 	
 	@GetMapping("/recipes")
-	public Flux<Recipes> getRecipes(@RequestParam(value = "Cuisine", required=false) String cuisine,
+	public Flux<Recipes> getRecipes(@RequestParam(value="Cuisine",required=false) String cuisine,
 									@RequestParam(value= "Course", required=false) String course,
 									@RequestParam(value= "Diet", required=false) String diet,
-									@RequestParam(value= "SearchText", required=false) String searchText){
+									@RequestParam(value= "SearchText", required=false) String searchText,
+									@RequestBody(required=false) String body){
+		logger.debug("calling searchservice");
 		return searchService.getRecipies(cuisine, diet, course, searchText);
 	}
 	

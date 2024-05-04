@@ -1,3 +1,0 @@
-spring.application.name=recipes
-spring.data.mongodb.uri=mongodb://localhost:27017/receipes
-server.port=1234
